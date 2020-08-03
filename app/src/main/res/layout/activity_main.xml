@@ -9,21 +9,21 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="19dp"
         android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintVertical_bias="0.027" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="349dp"
         android:layout_height="401dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="130dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="53dp"
         android:contentDescription="TODO"
         android:scaleType="fitCenter"
@@ -31,21 +31,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <Button
+        android:id="@+id/chooseImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="100dp"
+        android:onClick="chooseImage"
+        android:text="Gallery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="174dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginBottom="45dp"
-        android:onClick="procImg"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="11dp"
+        android:onClick="start"
         android:text="Process"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/chooseImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
