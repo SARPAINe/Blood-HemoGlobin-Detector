@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         textView=(TextView)findViewById(R.id.textView);
         imageView=(ImageView)findViewById(R.id.imageView);
 //        imageView.setImageResource(R.drawable.test);
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                     blue[i][j] = Color.blue(colour);
                     alpha[i][j] = Color.alpha(colour);
                 }
-            int[][][] data = pyf.callAttr("test", red, green, blue).toJava(int[][][].class);
+            final int[][][] data = pyf.callAttr("test", red, green, blue).toJava(int[][][].class);
             for (int x = 0; x < 500; x++) {
                 for (int y = 0; y < 800; y++) {
 
@@ -107,7 +108,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     imageView.setImageBitmap(scaledup);
-                    textView.setText("Done");
+                    String strDouble = String.format("%.2f",0.10427298290070008*(data[3][0][0]/(data[3][0][1]*1.5))+0.324912796713134);
+                    textView.setText("Hemoglobin level : "+strDouble);
 
                 }
             });

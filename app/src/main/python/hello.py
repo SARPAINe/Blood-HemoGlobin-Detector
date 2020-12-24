@@ -300,6 +300,7 @@ def test(red,blue,green):
     top=[int(first_coor[0][1])]
     bottom=[extr[1]]
     # print(left[0],right[0],top[0],bottom[0])
+
     cv2.rectangle(img2, (left[0],top[0]), (right[0],bottom[0]), (0, 0, 0), -1)
     # cv2.imshow("img1",img2)
 
@@ -312,6 +313,7 @@ def test(red,blue,green):
         right.append(int(second_coor[1][0]+(second_coor[1][0]-second_coor[0][0])*.4))
         top.append(int(first_coor[0][1]))
         bottom.append(extr[1])
+
         cv2.rectangle(img2, (left[1],top[1]), (right[1],bottom[1]), (0, 0, 0), -1)
 
         # cv2.imshow("img2",img2)
@@ -360,35 +362,55 @@ def test(red,blue,green):
     # cv2.circle(output_image, first_peak, 8, (255, 0, 0), -1)
     l, r = x_find_break(first_peak[0],first_peak[1],b[0])
     t=first_peak[1]+10
+
+    total=0
+    cnt=0
+    for i in range(l,r):
+        for j in range(t,b[0]):
+            blue,green,red=img[j,i]
+            total+=red
+            cnt+=1
+
     cv2.rectangle(output_image,(l,t),(r,b[0]),(0,0,255),1)
 
 # cv2.circle(output_image, second_peak, 8, (255, 0, 0), -1)
     l,r=x_find_break(second_peak[0],second_peak[1],b[1])
     t=second_peak[1]+10
+
+    for i in range(l,r):
+        for j in range(t,b[1]):
+            blue,green,red=img[j,i]
+            total+=red
+            cnt+=1
+
     cv2.rectangle(output_image,(l,t),(r,b[1]),(0,0,255),1)
 
     # cv2.circle(output_image, third_peak, 8, (255, 0, 0), -1)
     l,r=x_find_break(third_peak[0],third_peak[1],b[2])
     t=third_peak[1]+10
+
+    for i in range(l,r):
+        for j in range(t,b[2]):
+            blue,green,red=img[j,i]
+            total+=red
+            cnt+=1
+
     cv2.rectangle(output_image,(l,t),(r,b[2]),(0,0,255),1)
 
     # cv2.circle(output_image, fourth_peak, 8, (255, 0, 0), -1)
     l,r=x_find_break(fourth_peak[0],fourth_peak[1],b[3])
     t=fourth_peak[1]+10
+
+    for i in range(l,r):
+        for j in range(t,b[3]):
+            blue,green,red=img[j,i]
+            total+=red
+            cnt+=1
+
     cv2.rectangle(output_image,(l,t),(r,b[3]),(0,0,255),1)
 
-# cv2.circle(output_image, extr, 8, (255, 0, 0), -1)
-    extrb=find_break(extr[0]-40,extr[0],extr[1])
-    b.append(extrb)
-    l,r=x_find_break(extr[0]-20,extr[1],b[4])
-    t=extr[1]+10
-    cv2.rectangle(output_image,(l-10,t),(r,b[4]),(0,0,255),1)
-
-
-    l, r = x_find_break(first_peak[0],first_peak[1],b[0])
-    t=first_peak[1]+10
-    cv2.rectangle(output_image,(l,t),(r,b[0]),(0,0,255),1)
-
+    ans=[[total,cnt]]
+    lst=np.array(ans)
     blue, green, red = cv2.split(output_image)
-    return red, green, blue
+    return red, green, blue, lst
 
